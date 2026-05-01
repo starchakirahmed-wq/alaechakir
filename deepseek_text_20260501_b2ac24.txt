@@ -1,0 +1,18 @@
+your-project-folder/
+│
+├── index.html              (الملف الرئيسي – محسن)
+├── style.min.css           (الأنماط – مضغوطة)
+├── script.min.js           (كود JavaScript – مضغوط)
+├── images/                 
+│   ├── hero.webp           (صورة الخلفية الرئيسية)
+│   ├── package1-red.webp   (باقة 1 – أحمر)
+│   ├── package1-pink.webp  (باقة 1 – وردي)
+│   ├── package1-yellow.webp
+│   ├── ...                 (جميع صور الباقات بنفس الأسماء ولكن بصيغة .webp)
+│   ├── brushes-pink.webp   (فرش – وردي)
+│   ├── brushes-yellow.webp
+│   ├── brushes-red.webp
+│   ├── pillows-pink.webp   (مخدات)
+│   ├── pillows-red.webp
+│   ├── pillows-yellow.webp
+│   ├── basket.webp         (قفف)
