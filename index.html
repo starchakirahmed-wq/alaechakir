@@ -508,6 +508,53 @@
 
         .dot.yellow { background: var(--yellow); }
 
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.12), rgba(255, 255, 255, 0.95));
+            border: 2px solid #e63946;
+            border-radius: 24px;
+            margin: 25px auto 35px;
+            padding: 20px 18px;
+            max-width: 1100px;
+            color: #222;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(230, 57, 70, 0.12);
+        }
+
+        .promo-banner .promo-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #b71c1c;
+            margin-bottom: 12px;
+        }
+
+        .promo-banner .promo-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+
+        .promo-timer {
+            background: #e63946;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-weight: 900;
+            min-width: 160px;
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+        }
+
+        .promo-note {
+            color: #991b1b;
+            font-weight: 700;
+        }
+
+        .promo-banner strong {
+            color: #b71c1c;
+        }
+
 
 
 
@@ -1406,6 +1453,11 @@
 
 
 
+        .sold-out-red {
+            color: #e63946;
+            font-weight: 800;
+        }
+
         }
 
 
@@ -1450,11 +1502,26 @@
 
 
 
+    <div class="promo-banner">
 
+        <div class="promo-title"  >  عرض و كمية محدودة - </div>
+
+        <div class="promo-details">
+
+            <span>العرض مستمر فقط خلال 24 ساعة </span>
+
+            <span class="promo-timer" id="promo-timer">24:00:00</span>
+
+            <span class="promo-note">الكمية المتبقية: <strong id="promo-quantity">10</strong></span>
+
+        </div>
+
+    </div>
 
 
 
     <div class="container">
+
 
 
 
@@ -1783,6 +1850,30 @@
 
 
                     <div class="card-body"><h4>قفف بيكينيك</h4></div>
+                    <div class="card-body">
+  <h4 class="sold-out-red" style="
+    color: #ff3333;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+    animation: pulse-glow 1.2s ease-in-out infinite;
+  ">الكمية منتهية</h4>
+</div>
+
+<style>
+  @keyframes pulse-glow {
+    0% {
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+      opacity: 0.9;
+    }
+    50% {
+      text-shadow: 0 0 20px #ff3300, 0 0 35px #ff0000, 0 0 45px #ff6600;
+      opacity: 1;
+    }
+    100% {
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+      opacity: 0.9;
+    }
+  }
+</style>
 
 
 
@@ -1954,10 +2045,6 @@
 
 
 
-            <figure class="customer-tile"><img class="customer-shot" src="customer16.jpeg" alt="صÙˆرØ© زبÙˆل 16"></figure>
-
-
-
             <figure class="customer-tile"><img class="customer-shot" src="customer17.jpeg" alt="صÙˆرØ© زبÙˆل 17"></figure>
 
 
@@ -1966,23 +2053,7 @@
 
 
 
-            <figure class="customer-tile"><img class="customer-shot" src="customer19.jpeg" alt="صÙˆرØ© زبÙˆل 19"></figure>
-
-
-
             <figure class="customer-tile"><img class="customer-shot" src="customer20.jpeg" alt="صÙˆرØ© زبÙˆل 20"></figure>
-
-
-
-            <figure class="customer-tile"><img class="customer-shot" src="customer21.jpeg" alt="صÙˆرØ© زبÙˆل 21"></figure>
-
-
-
-            <figure class="customer-tile"><img class="customer-shot" src="customer22.jpeg" alt="صÙˆرØ© زبÙˆل 22"></figure>
-
-
-
-            <figure class="customer-tile"><img class="customer-shot" src="customer23.jpeg" alt="صÙˆرØ© زبÙˆل 23"></figure>
 
 
 
@@ -3694,6 +3765,50 @@
 
 
 
+
+
+
+        function initPromoTimer() {
+
+            const timerEl = document.getElementById('promo-timer');
+
+            const qtyEl = document.getElementById('promo-quantity');
+
+            let seconds = 24 * 60 * 60;
+
+            const quantity = 8 + Math.floor(Math.random() * 6);
+
+            if (qtyEl) qtyEl.textContent = quantity;
+
+
+
+            const updateTimer = () => {
+
+                if (!timerEl) return;
+
+                const hours = Math.floor(seconds / 3600).toString().padStart(2, '0');
+
+                const minutes = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+
+                const secs = (seconds % 60).toString().padStart(2, '0');
+
+                timerEl.textContent = `${hours}:${minutes}:${secs}`;
+
+                if (seconds > 0) seconds -= 1;
+
+            };
+
+
+
+            updateTimer();
+
+            setInterval(updateTimer, 1000);
+
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', initPromoTimer);
 
 
 
